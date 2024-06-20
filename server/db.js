@@ -5,10 +5,9 @@ import chalk from 'chalk';
 dotenv.config();
 
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/Reservation_Planner');
+client.connect();
 
 const createTables = async () => {
-  await client.connect();
-
   const SQL = `
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
